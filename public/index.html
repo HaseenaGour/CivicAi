@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3b">
+  <meta name="description" content="CivicSignal helps residents report local issues and helps service teams act on recurring problems.">
+  <title>CivicSignal | Local issues, moving forward</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-signal" viewBox="0 0 32 32"><path d="M4 23.5a17 17 0 0 1 24 0M8.5 19a10.5 10.5 0 0 1 15 0M13 14.5a4.2 4.2 0 0 1 6 0M16 27v1"/><circle cx="16" cy="26" r="1"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"/><path d="M12 9v5m0 3h.01"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Zm7 12 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.2 1.8c-1.1 1-1.8 1.3-1.8 2.7m0 3h.01"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <a class="brand" href="#report" aria-label="CivicSignal home" data-nav="report">
+      <span class="brand-mark"><svg class="icon"><use href="#i-signal"/></svg></span>
+      <span class="brand-name">Civic<span>Signal</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Main navigation">
+      <button class="nav-link is-active" data-nav="report" aria-current="page">Report an issue</button>
+      <button class="nav-link" data-nav="dashboard">Operations <span class="nav-count" id="nav-count">40</span></button>
+      <button class="nav-link" data-nav="track">Track a report</button>
+    </nav>
+    <div class="topbar-meta"><span class="live-dot"></span><span>Bellwether demo</span><span class="synthetic-tag">Synthetic data</span></div>
+  </header>
+
+  <main class="app-shell">
+    <section class="view is-visible" id="view-report" aria-labelledby="report-title">
+      <div class="page-intro report-intro">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-rule"></span> COMMUNITY SIGNAL / 01</p>
+          <h1 id="report-title">Make your street<br><em>easier to live on.</em></h1>
+          <p class="intro-copy">Tell us what needs attention. Your report helps the right local team see the issue, spot patterns, and act.</p>
+        </div>
+        <div class="intro-note"><span class="note-index">01</span><p><strong>Under a minute.</strong><br>One clear description and a nearby location are enough to get started.</p></div>
+      </div>
+
+      <div class="report-layout">
+        <section class="report-panel panel" aria-label="Submit a local issue">
+          <div class="panel-heading"><div><p class="section-kicker">NEW COMMUNITY REPORT</p><h2>What needs attention?</h2></div><span class="step-mark">01 <i>/ 01</i></span></div>
+          <form id="report-form" novalidate>
+            <div class="field-row">
+              <label class="field"><span>Issue type <b aria-hidden="true">*</b></span>
+                <select id="category" name="category" required>
+                  <option value="" disabled selected>Choose a category</option>
+                  <option>Waterlogging</option><option>Damaged road</option><option>Overflowing bins</option><option>Broken streetlight</option><option>Other</option>
+                </select>
+              </label>
+              <label class="field"><span>Neighborhood <b aria-hidden="true">*</b></span>
+                <select id="area" name="area" required><option value="" disabled selected>Select an area</option><option>Canal Ward</option><option>Northbank</option><option>Market Square</option><option>Cedar Park</option><option>Old Quarter</option></select>
+              </label>
+            </div>
+            <label class="field"><span>Describe the issue <b aria-hidden="true">*</b></span>
+              <textarea id="description" name="description" rows="3" minlength="12" maxlength="1000" placeholder="What is happening, and what should the service team know?" required></textarea>
+              <span class="field-meta"><span>Keep it clear and specific.</span><span id="description-count">0 / 1,000</span></span>
+            </label>
+            <label class="field"><span>Address or landmark <span class="optional">OPTIONAL</span></span><input id="address" name="address" list="address-suggestions" maxlength="160" placeholder="Search a sample address or enter a landmark" autocomplete="street-address"><datalist id="address-suggestions"><option value="Canal underpass, east entrance"></option><option value="Canal footbridge, south ramp"></option><option value="Harbor drain, Canal Ward"></option><option value="Northbank library crossing"></option><option value="Mill Street bus stop"></option><option value="Riverside cycle path"></option><option value="Market Square bus stop"></option><option value="Market Hall east corner"></option><option value="Clock Tower crossing"></option><option value="Cedar Park playground entrance"></option><option value="Willow Avenue, Cedar Park"></option><option value="Old Quarter curb ramp"></option><option value="Lantern Street, Old Quarter"></option></datalist><span class="location-hint" id="location-search-note">Sample Bellwether addresses only; no live geocoder.</span></label>
+            <div class="location-actions"><button class="button button-secondary button-small" id="use-current-location" type="button"><svg class="icon"><use href="#i-crosshair"/></svg><span>Use my location</span></button><button class="button button-secondary button-small" id="toggle-pin" type="button" aria-expanded="false"><svg class="icon"><use href="#i-pin"/></svg><span>Drop a pin</span></button></div>
+            <div class="location-preview" id="location-preview" role="status" aria-live="polite"><span class="location-preview-icon"><svg class="icon"><use href="#i-pin"/></svg></span><div><strong id="location-preview-title">Choose a neighborhood to set a location</strong><span id="location-preview-detail">You can search a sample address, use your device location, or adjust the pin.</span></div></div>
+            <div class="pin-row"><div><span class="field-label">Prototype map <span class="optional">NOT TO SCALE</span></span><p>Confirm the approximate point or move the pin.</p></div></div>
+            <div class="pin-picker" id="pin-picker" hidden>
+              <div class="pin-picker-top"><span id="pin-map-instructions">Click the map or focus it and use arrow keys</span><span id="pin-coords">No pin placed</span></div>
+              <div class="mini-map" id="mini-map" role="application" tabindex="0" aria-describedby="pin-map-instructions" aria-label="Map pin selector. Click a location to place a pin."><svg viewBox="0 0 400 180" preserveAspectRatio="none" aria-hidden="true"><path class="map-water" d="M-10 110C70 82 100 132 165 101s85-14 120-44 80-30 130-26v170H-10Z"/><path class="map-road" d="M15 154 100 20m20 145 116-148m0 159L350 38M22 79h355M55 30h294M27 130h343"/><path class="map-road map-road-small" d="M83 11v155m86-153v153m84-153v153m77-153v153M15 54h362m-360 54h360"/></svg><button id="pin-marker" class="pin-marker" type="button" aria-label="Placed map pin" hidden><svg class="icon"><use href="#i-pin"/></svg></button><span class="mini-map-label label-north">NORTHBANK</span><span class="mini-map-label label-canal">CANAL WARD</span><span class="mini-map-label label-market">MARKET SQ.</span><span class="mini-map-label label-cedar">CEDAR PARK</span></div>
+              <input id="pin-x" type="hidden" value=""><input id="pin-y" type="hidden" value="">
+            </div>
+            <div class="upload-row"><div class="upload-icon"><svg class="icon"><use href="#i-image"/></svg></div><div class="upload-copy"><label for="image">Add a photo <span class="optional">OPTIONAL</span></label><span>JPEG, PNG or WebP · up to 2 MB</span><span class="image-name" id="image-name"></span></div><label class="button button-quiet button-small upload-button" for="image">Choose image</label><input id="image" name="image" type="file" accept="image/png,image/jpeg,image/webp" hidden></div>
+            <div class="form-error" id="form-error" role="alert" hidden></div>
+            <button class="button button-primary submit-button" id="submit-report" type="submit"><span>Send report</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+            <p class="privacy-note">Please leave out names or sensitive personal information.</p>
+          </form>
+          <div class="submission-success" id="submission-success" role="status" hidden></div>
+        </section>
+
+        <aside class="report-aside">
+          <section class="aside-block next-steps"><p class="section-kicker">AFTER YOU REPORT</p><h2>From signal<br>to street-level action.</h2><ol class="step-list"><li><span>1</span><div><strong>We check for patterns</strong><p>Related reports are grouped so repeat problems stand out.</p></div></li><li><span>2</span><div><strong>A local team reviews it</strong><p>Staff assess urgency and route work to the right team.</p></div></li><li><span>3</span><div><strong>You can follow progress</strong><p>Use your report reference to see status updates.</p></div></li></ol><div class="aside-foot"><svg class="icon"><use href="#i-spark"/></svg><span>Analysis is simulated in this prototype.</span></div></section>
+          <section class="sample-callout"><div class="sample-callout-top"><span class="small-status status-in-progress">IN PROGRESS</span><span class="sample-label">SAMPLE REPORT</span></div><p class="sample-title">Standing water at the Canal Ward underpass</p><div class="sample-meta"><span><svg class="icon"><use href="#i-pin"/></svg> Canal Ward</span><span>6 related reports</span></div><button class="text-action" data-nav="dashboard">See the operations view <svg class="icon"><use href="#i-arrow"/></svg></button></section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-dashboard" aria-labelledby="dashboard-title" hidden>
+      <div class="dashboard-heading"><div><p class="eyebrow"><span class="eyebrow-rule"></span> SERVICE OPERATIONS / 02</p><h1 id="dashboard-title">See the pattern.<br><em>Move the work.</em></h1></div><div class="dashboard-heading-right"><span class="simulated-badge"><svg class="icon"><use href="#i-spark"/></svg> Simulated analysis</span><p>40 synthetic reports · Bellwether</p></div></div>
+      <div class="metric-strip" id="metric-strip" aria-label="Report totals"></div>
+      <div class="filters-bar"><div class="filters-title"><svg class="icon"><use href="#i-filter"/></svg><span>Filter reports</span></div><label class="filter-field"><span>Category</span><select id="filter-category"><option>All</option><option>Waterlogging</option><option>Damaged road</option><option>Overflowing bins</option><option>Broken streetlight</option><option>Other</option></select></label><label class="filter-field"><span>Priority</span><select id="filter-priority"><option>All</option><option>Critical</option><option>High</option><option>Medium</option><option>Low</option></select></label><label class="filter-field"><span>Status</span><select id="filter-status"><option>All</option><option>New</option><option>Reviewed</option><option>Assigned</option><option>In progress</option><option>Resolved</option></select></label><label class="filter-field"><span>Reported</span><select id="filter-date"><option value="all">Any time</option><option value="week">Last 7 days</option><option value="today">Today</option></select></label><button class="filter-reset" id="reset-filters" type="button">Reset</button></div>
+      <div class="ops-grid">
+        <section class="map-panel panel" aria-labelledby="map-title"><div class="panel-heading map-heading"><div><p class="section-kicker">BELLWETHER SERVICE AREA</p><h2 id="map-title">Report activity <span class="synthetic-inline">SYNTHETIC</span></h2></div><span class="map-window">ALL AREAS <i>⌄</i></span></div><div class="map-canvas" id="map-canvas"><svg class="city-map" viewBox="0 0 700 390" preserveAspectRatio="none" aria-hidden="true"><path class="water-line" d="M-20 240C110 205 151 278 274 217s152-7 236-95S638 76 730 48"/><path class="road-line road-major" d="M40 340 177 30m-78 342L320 18m10 360L493 28m23 350L676 70M18 127h674M9 304h681M21 215h671M100 58h555"/><path class="road-line" d="M95 20v355m104-348v345m113-354v354m111-348v355m112-340v342m107-300v284M15 84h675m-676 86h672m-669 88h673m-663 84h659"/><path class="park-shape" d="m480 244 60-10 33 42-9 58-54 19-44-31Z"/><path class="park-shape" d="m94 90 38-20 30 25-8 39-41 14-29-24Z"/></svg><div class="map-neighborhood n-north">NORTHBANK</div><div class="map-neighborhood n-market">MARKET SQUARE</div><div class="map-neighborhood n-canal">CANAL WARD</div><div class="map-neighborhood n-cedar">CEDAR PARK</div><div class="map-neighborhood n-old">OLD QUARTER</div><div id="map-markers" class="map-markers" aria-label="Report locations"></div><div class="map-legend"><span><i class="legend-dot dot-critical"></i>Critical</span><span><i class="legend-dot dot-high"></i>High</span><span><i class="legend-dot dot-cluster"></i>Report cluster</span></div><div class="map-attribution">Illustrative map · not to scale</div></div><div class="map-foot"><span id="map-result-count">40 reports shown</span><span><svg class="icon"><use href="#i-pin"/></svg> Select a marker or report to inspect</span></div></section>
+        <section class="queue-panel panel" aria-labelledby="queue-title"><div class="panel-heading queue-heading"><div><p class="section-kicker">NEEDS ATTENTION</p><h2 id="queue-title">Report queue</h2></div><span class="queue-count" id="queue-count">40</span></div><div id="report-list" class="report-list" aria-live="polite"></div></section>
+      </div>
+      <div class="insights-grid"><section class="insight-panel panel"><div class="insight-title"><span class="insight-icon"><svg class="icon"><use href="#i-spark"/></svg></span><div><p class="section-kicker">PATTERN SIGNAL / SIMULATED</p><h2 id="insight-headline">A recurring issue is taking shape</h2></div></div><p class="insight-copy" id="insight-copy">Loading area patterns...</p><div class="hotspot-list" id="hotspot-list"></div></section><section class="action-brief panel"><p class="section-kicker">ACTION BRIEF</p><div class="brief-rank"><span>FIRST TO REVIEW</span><span class="priority-pill" id="top-priority">HIGH</span></div><h2 id="top-report-title">Loading priority report...</h2><p id="top-report-reason">Priority rationale will appear here.</p><button id="review-top" class="button button-dark button-small" type="button">Review report <svg class="icon"><use href="#i-arrow"/></svg></button></section></div>
+      <section class="detail-panel panel" id="detail-panel" aria-labelledby="detail-title"><div class="detail-empty"><span class="empty-mark"><svg class="icon"><use href="#i-crosshair"/></svg></span><div><p class="section-kicker">REPORT REVIEW</p><h2 id="detail-title">Choose a report to review</h2><p>Select an item from the queue or map to assign an owner, add an internal note, or update its status.</p></div></div><div id="detail-content" hidden></div></section>
+      <p class="demo-disclaimer">All reports, locations, and activity on this dashboard are synthetic demo data. Priority and hotspot analysis is rule-based and simulated.</p>
+    </section>
+
+    <section class="view" id="view-track" aria-labelledby="track-title" hidden>
+      <div class="track-intro"><p class="eyebrow"><span class="eyebrow-rule"></span> CITIZEN UPDATES / 03</p><h1 id="track-title">A little more<br><em>peace of mind.</em></h1><p>Enter the reference number from your confirmation to see what’s happening with your report.</p></div>
+      <section class="track-search panel"><form id="track-form"><label class="field"><span>Report reference</span><div class="track-input-row"><div class="input-with-icon"><svg class="icon"><use href="#i-search"/></svg><input id="track-reference" name="reference" placeholder="e.g. CS-26-0011" autocomplete="off" required></div><button class="button button-primary" type="submit">Find report <svg class="icon"><use href="#i-arrow"/></svg></button></div></label><div class="track-examples"><span>Try a sample:</span><button type="button" class="reference-chip" data-reference="CS-26-0011">CS-26-0011</button><button type="button" class="reference-chip" data-reference="CS-26-0003">CS-26-0003</button></div></form><div class="track-error" id="track-error" role="alert" hidden></div></section>
+      <section id="tracking-result" class="tracking-result" aria-live="polite" hidden></section>
+      <div class="track-help"><span class="help-icon"><svg class="icon"><use href="#i-clock"/></svg></span><div><strong>Updates are shared as teams review and work on reports.</strong><p>There’s no estimated completion date unless the local service team has provided one.</p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© CivicSignal · Prototype for Bellwether</span><span><span class="footer-dot"></span> Local demo · no live service connection</span></footer>
+  <button class="help-launcher" id="help-launcher" type="button" aria-haspopup="dialog" aria-controls="help-dialog"><svg class="icon"><use href="#i-help"/></svg> Platform help</button>
+  <dialog class="help-dialog" id="help-dialog" aria-labelledby="help-title" aria-describedby="help-prototype-note">
+    <div class="help-header"><div class="help-title-wrap"><span class="help-heading-icon"><svg class="icon"><use href="#i-help"/></svg></span><div><p class="section-kicker">CIVICSIGNAL</p><h2 id="help-title">How can we help?</h2></div></div><button class="help-close" id="close-help" type="button" aria-label="Close help assistant"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <div class="help-body"><p class="help-prototype-note" id="help-prototype-note"><svg class="icon"><use href="#i-spark"/></svg><span>Prototype help assistant. Answers are scripted; this chat cannot submit reports, contact a service team, or provide live updates.</span></p><div class="help-suggestions" aria-label="Suggested help questions"><span>Suggested questions</span><button class="help-question" type="button" data-help="report">How do I report a local issue? <svg class="icon"><use href="#i-chevron"/></svg></button><button class="help-question" type="button" data-help="details">What information should I include? <svg class="icon"><use href="#i-chevron"/></svg></button><button class="help-question" type="button" data-help="track">How can I find my report status? <svg class="icon"><use href="#i-chevron"/></svg></button></div><div class="help-answer" id="help-answer" role="status" aria-live="polite" hidden></div></div>
+  </dialog>
+  <div class="toast-region" id="toast-region" role="status" aria-live="polite"></div>
+</body>
+</html>
